@@ -456,7 +456,7 @@ with tab1:
             course_title = st.text_input("Titre du cours ou de la note")
             course_content = st.text_area("Contenu du cours ou de la note", height=200)
             
-            if st.button("Importer le cours ounla prise de note") and course_title and course_content:
+            if st.button("Importer le cours ou la prise de note") and course_title and course_content:
                 new_course = {
                     'id': len(st.session_state.courses),
                     'title': course_title,
@@ -597,15 +597,21 @@ with tab1:
                         st.session_state.courses = [c for c in st.session_state.courses if c['id'] != course['id']]
                         st.rerun()
                 with col_d :
-                    st.button("Génèrer une synthèse")
+                    if st.button("Génèrer une synthèse", key=f"col_d_{course['id']}"):
+                        st.success("Génèration une synthèse simulé - Dans la vraie app, ceci utiliserait l'API de de Google")
+                # Simulation
                 with col_e :
-                    st.button("Génèrer un podcast (Spech generation)")
+                    if st.button("Génèrer un podcast (Spech generation)",key=f"col_e_{course['id']}"):
+                        st.success("Génèration podcast simulé - Dans la vraie app, ceci utiliserait l'API de de Google")
                 with col_f :
-                    st.button("Story telling")
+                    if st.button("Story telling",key=f"col_f_{course['id']}"):
+                        st.success("Génèration story telling simulé - Dans la vraie app, ceci utiliserait l'API de de Google")
                 with col_g :
-                    st.button("Chatter par texte")
+                    if st.button("Chatter par texte",key=f"col_g_{course['id']}"):
+                        st.success("Chat simulé - Dans la vraie app, ceci utiliserait l'API de de Google")
                 with col_h :
-                    st.button("Chatte par voice 2 voice")
+                    if st.button("Chatte par voice 2 voice", key=f"col_h_{course['id']}"):
+                        st.success("Chat simulé - Dans la vraie app, ceci utiliserait l'API de de Google")
 # Onglet 2: Quiz
 with tab2:
     st.header("🎯 Quiz Interactif")
